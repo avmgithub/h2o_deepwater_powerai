@@ -1,4 +1,4 @@
-FROM avmdocker/ibmmldlh2odeepwater:latest
+FROM avmdocker/ibmmldlh2odeepwater:0.6
 
 # uprev to force rebuild even if cached
 ENV APP_POWERAI_VERSION 1
@@ -50,3 +50,6 @@ COPY scripts/apply_h2o_patch.sh /usr/local/scripts/apply_h2o_patch.sh
 COPY scripts/h2o.py.patch /usr/local/scripts/h2o.py.patch
 RUN /usr/local/scripts/apply_h2o_patch.sh
 COPY scripts/runh2o /usr/local/scripts/runh2o
+
+# install demo notebook requesite
+RUN pip install Keras
