@@ -1,0 +1,5 @@
+export CUDA_PATH=/usr/local/cuda
+export LD_LIBRARY_PATH=$CUDA_PATH/lib64:$LD_LIBRARY_PATH:./lib
+
+java -Xmx30g  -jar /home/h2o.jar -port 65432 
+

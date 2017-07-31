@@ -1,0 +1,12 @@
+--- h2o.py  2017-07-31 18:53:43.537401214 +0000
++++ h2o.py.new  2017-07-31 18:53:17.993005282 +0000
+@@ -257,8 +257,8 @@
+                                   min_mem_size=mmin, ice_root=ice_root, port=port)
+         h2oconn = H2OConnection.open(server=hs, https=https, verify_ssl_certificates=not insecure,
+                                      auth=auth, proxy=proxy,cookies=cookies, verbose=True)
+-    if check_version:
+-        version_check()
++    # if check_version:
++    #     version_check()
+     h2oconn.cluster.timezone = "UTC"
+     h2oconn.cluster.show_status()
