@@ -1,4 +1,4 @@
-FROM avmdocker/ibmmldlh2odeepwater:latest
+FROM avmdocker/ibmmldlh2odeepwater:0.6
 
 # uprev to force rebuild even if cached
 ENV APP_POWERAI_VERSION 1
