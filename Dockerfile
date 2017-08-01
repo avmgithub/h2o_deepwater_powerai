@@ -43,7 +43,7 @@ RUN pip install tabulate
 RUN pip install scikit-learn
 RUN pip install colorama
 RUN pip install future 
-RUN pip install http://s3.amazonaws.com/h2o-release/h2o/master/3958/Python/h2o-3.13.0.3958-py2.py3-none-any.whl
+RUN pip install http://s3.amazonaws.com/h2o-release/h2o/master/3951/Python/h2o-3.13.0.3951-py2.py3-none-any.whl
 
 # modify h2o.py file
 COPY scripts/apply_h2o_patch.sh /usr/local/scripts/apply_h2o_patch.sh
