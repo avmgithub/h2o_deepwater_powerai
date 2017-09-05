@@ -69,7 +69,7 @@ RUN apt-get install -y openjdk-8-jdk
 RUN apt-get install -y openjdk-8-jre
 
 # install CUDA
-ADD https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1604-8-0-local-ga2v2_8.0.61-1_ppc64el-deb /tmp/cuda-repo-ubuntu1604-8-0-local-ga2v2_8.0.61-1_ppc64el.deb
-RUN dpkg -i /tmp/cuda-repo-ubuntu1604-8-0-local-ga2v2_8.0.61-1_ppc64el.deb
-RUN apt-get update
-RUN apt-get install cuda -y
+#ADD https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1604-8-0-local-ga2v2_8.0.61-1_ppc64el-deb /tmp/cuda-repo-ubuntu1604-8-0-local-ga2v2_8.0.61-1_ppc64el.deb
+#RUN dpkg -i /tmp/cuda-repo-ubuntu1604-8-0-local-ga2v2_8.0.61-1_ppc64el.deb
+#RUN apt-get update
+#RUN apt-get install cuda -y
