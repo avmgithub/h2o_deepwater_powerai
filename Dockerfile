@@ -1,4 +1,4 @@
-FROM avmdocker/ibmmldlh2odw_r4:latest
+FROM avmdocker/ibmmldlh2odw_r4:01
 #FROM jarvice/ubuntu-ibm-mldl-ppc64le:latest
 
 # uprev to force rebuild even if cached
