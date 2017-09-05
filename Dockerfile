@@ -1,4 +1,5 @@
-FROM avmdocker/ibmmldlh2odeepwater
+#FROM jarvice/ubuntu-ibm-mldl-ppc64le:latest
+FROM avmdocker/ibmmldlh2odw_r4:latest
 
 # uprev to force rebuild even if cached
 ENV APP_POWERAI_VERSION 1
@@ -14,6 +15,11 @@ RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice
 
 COPY samples/h2o_deepwater_multi_gpu_mlp.ipynb /usr/local/samples/h2o_deepwater_multi_gpu_mlp.ipynb
 COPY scripts/sample_notebook.sh /usr/local/scripts/sample_notebook.sh
+
+# install supervisor and configurations
+RUN apt-get install -y supervisor
+ADD conf.d/* /etc/supervisor/conf.d/
+ADD scripts/rc.local /etc/rc.local
 
 #add Jupyter
 RUN pip install --upgrade pip
@@ -50,6 +56,20 @@ COPY scripts/apply_h2o_patch.sh /usr/local/scripts/apply_h2o_patch.sh
 COPY scripts/h2o.py.patch /usr/local/scripts/h2o.py.patch
 RUN /usr/local/scripts/apply_h2o_patch.sh
 COPY scripts/runh2o /usr/local/scripts/runh2o
+COPY scripts/startmapd.sh /usr/local/scripts/startmapd.sh
 
 # install demo notebook requesite
 RUN pip install Keras
+
+# mapd requirements
+RUN apt-get install -y xorg
+RUN apt-get install -y initramfs-tools
+RUN apt-get install -y pciutils
+RUN apt-get install -y openjdk-8-jdk
+RUN apt-get install -y openjdk-8-jre
+
+# install CUDA
+ADD https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1604-8-0-local-ga2v2_8.0.61-1_ppc64el-deb /tmp/cuda-repo-ubuntu1604-8-0-local-ga2v2_8.0.61-1_ppc64el.deb
+RUN dpkg -i /tmp/cuda-repo-ubuntu1604-8-0-local-ga2v2_8.0.61-1_ppc64el.deb
+RUN apt-get update
+RUN apt-get install cuda -y
