@@ -1,1 +1,1 @@
-sudo docker run --privileged -it avmdocker/ibmmldlh2odw_r4:latest /bin/bash
+sudo docker run --privileged -it avmdocker/ibmmldlh2odw_r4:01 /bin/bash
