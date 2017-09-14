@@ -1,5 +1,4 @@
-FROM avmdocker/ibmmldlh2odw_r4:01
-#FROM jarvice/ubuntu-ibm-mldl-ppc64le:latest
+FROM jarvice/ubuntu-ibm-mldl-ppc64le:latest
 
 # uprev to force rebuild even if cached
 ENV APP_POWERAI_VERSION 1
@@ -10,6 +9,7 @@ RUN bash /tmp/install-ubuntu.sh && rm -f /tmp/install-ubuntu.sh
 COPY NAE/help.html /etc/NAE/help.html
 
 COPY NAE/AppDef.json /etc/NAE/AppDef.json
+COPY NAE/nvidia.cfg /etc/NAE/nvidia.cfg
 COPY NAE/screenshot.png /etc/NAE/screenshot.png
 RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice/validate
 
@@ -31,17 +31,17 @@ RUN pip install python-resize-image
 
 RUN pip install pandas_datareader
 RUN pip install httplib2
-RUN apt-get install -y build-essential
-RUN apt-get install -y libssl-dev
-RUN apt-get install -y libffi-dev
-RUN apt-get install -y python-dev
-RUN apt-get install -y python-matplotlib
-RUN apt-get install -y python-lxml
-RUN apt-get install -y openssh-server
+RUN apt-get install -y build-essential libssl-dev libffi-dev python-dev python-matplotlib python-lxml openssh-server python-scipy libxml2-dev libxmlsec1-dev
+#RUN apt-get install -y libssl-dev
+#RUN apt-get install -y libffi-dev
+#RUN apt-get install -y python-dev
+#RUN apt-get install -y python-matplotlib
+#RUN apt-get install -y python-lxml
+#RUN apt-get install -y openssh-server
 RUN pip install cython
-RUN apt-get install -y python-scipy
+# RUN apt-get install -y python-scipy
 RUN pip install scikit-learn
-RUN apt-get install -y libxml2-dev libxmlsec1-dev
+#RUN apt-get install -y libxml2-dev libxmlsec1-dev
 
 # h2o python component 
 RUN pip install requests
