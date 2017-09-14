@@ -12,8 +12,7 @@
         "IBM POWER/Data Science"
     ],
     "machines": [
-        "np8g1",
-        "np8g2"
+        "np8g*"
     ],
     "vault-types": [
         "NONE"
@@ -23,7 +22,7 @@
             "path": "/usr/local/scripts/sample_notebook.sh",
             "interactive": true,
             "name": "Start",
-            "description": "Launch a Jupyter Notebook to run the Transfer Learning demo directly in your browser.",
+            "description": "Launch a Jupyter Notebook to run the H2O demo directly in your browser.",
             "parameters": {
                 "-s": {
                     "name": "-s",
